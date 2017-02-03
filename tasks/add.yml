@@ -1,11 +1,11 @@
 ---
 
-- name: Remove key from the server
+- name: Set authorized key from file
   authorized_key:
     user: '{{ansible_user}}'
-    state: absent
+    state: present
     key: "{{ lookup('file', '{{new_keypath_pub}}') }}"
   when:
-    - do_remove == true
+    - do_add == true
   tags:
-    - remove
+    - add

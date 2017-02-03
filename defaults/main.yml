@@ -7,5 +7,9 @@ keygen:
   bits:               4096
   encryption:         rsa
 
+comment:              ""
+
 do_regenerate:        false
 do_create:            false
+do_add:               false
+do_remove:            false
