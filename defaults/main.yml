@@ -1,0 +1,11 @@
+---
+
+private_base:         "~/private"
+keys_base:            "{{ private_base }}/keys"
+
+keygen:
+  bits:               4096
+  encryption:         rsa
+
+do_regenerate:        false
+do_create:            false

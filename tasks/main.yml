@@ -1,0 +1,27 @@
+---
+- fail: msg="Please ensure '{{ item.use }}' is set"
+  run_once: true
+  when:
+    - not {{ item.file }} is defined or {{ item.file }} == ""
+  with_items:
+    - {file: new_keyfile, use: 'New Key File'}
+    - {file: keys_base, use: 'Path to base folder for keys'}
+    - {file: keygen, use: 'Key Generation Configuration Object'}
+
+- debug: var={{ item }}
+  with_items:
+    - new_keyfile
+    - keys_base
+    - keygen
+  run_once: true
+
+- set_fact:
+    new_keypath: "{{ keys_base }}/{{ new_keyfile }}"
+
+- set_fact:
+    new_keypath_pub: "{{ new_keypath }}.pub"
+    new_keypath_pem: "{{ new_keypath }}.pem"
+    new_keypath_ppk: "{{ new_keypath }}.ppk"
+
+- include: remove.yml
+- include: create.yml

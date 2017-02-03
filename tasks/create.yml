@@ -1,0 +1,38 @@
+---
+
+  - name: Create "{{ new_keypath_pub }}"
+    local_action: shell ssh-keygen -b {{ keygen.bits }} -t {{ keygen.encryption }} -f {{ new_keypath }} -q -N '' -C '{{ server_fqdn }}'
+    run_once: true
+    args:
+      creates: "{{ new_keypath_pub }}"
+    when: do_create == true or do_regenerate == true
+
+  - name: Create "{{ new_keypath_pem }}"
+    connection: local
+    shell: cp {{ new_keypath }} {{ new_keypath_pem }}
+    run_once: true
+    register: result_pem
+    args:
+      creates: "{{ new_keypath_pem }}"
+    when: do_create == true or do_regenerate == true
+
+  - name: Is putty installed?
+    local_action: shell which puttygen
+    run_once: true
+    register: result_putty
+    ignore_errors: yes
+    when: do_create == true or do_regenerate == true
+
+  - name: Install putty
+    local_action: shell brew install putty
+    run_once: true
+    when:
+      - result_putty.failed is defined and result_putty.failed == true
+      - do_create == true or do_regenerate == true
+
+  - name: Create "{{ new_keypath_ppk }}"
+    local_action: shell puttygen {{ new_keypath }} -o {{ new_keypath_ppk }}
+    run_once: true
+    args:
+      creates: "{{ new_keypath_ppk }}"
+    when: do_create == true or do_regenerate == true
