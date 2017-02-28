@@ -1,6 +1,6 @@
 # Ansible: auth-key
 
-Create OpenSSH authorization keys, and push to a server
+Create, add and remove OpenSSH authorization keys
 
 Available on Ansible Galaxy: [pgkehle.auth-key](https://galaxy.ansible.com/pgkehle/auth-key)
 

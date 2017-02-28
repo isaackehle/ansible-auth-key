@@ -1,7 +1,7 @@
 {
   "name": "ansible-auth-key",
   "version": "1.0.0",
-  "description": "Create auth-key authorization keys, and push to a server",
+  "description": "Create, add and remove OpenSSH authorization keys",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
