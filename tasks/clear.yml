@@ -4,13 +4,9 @@
   connection: local
   file: path={{ item }} state=absent
   run_once: true
-  when:
-    - do_regenerate == true
   with_items:
     - "{{new_keypath}}"
     - "{{new_keypath_pub}}"
     - "{{new_keypath_pem}}"
     - "{{new_keypath_ppk}}"
-  tags:
-    - regenerate
 

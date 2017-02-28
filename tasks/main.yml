@@ -28,6 +28,18 @@
     new_keypath_ppk: "{{ new_keypath }}.ppk"
 
 - include: clear.yml
+  tags:
+    - regenerate
+
 - include: create.yml
+  tags:
+    - create
+    - regenerate
+
 - include: add.yml
+  tags:
+    - add
+
 - include: remove.yml
+  tags:
+    - remove

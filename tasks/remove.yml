@@ -5,7 +5,3 @@
     user: '{{ansible_user}}'
     state: absent
     key: "{{ lookup('file', '{{new_keypath_pub}}') }}"
-  when:
-    - do_remove == true
-  tags:
-    - remove

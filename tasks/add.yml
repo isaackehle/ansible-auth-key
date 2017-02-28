@@ -5,7 +5,3 @@
     user: '{{ansible_user}}'
     state: present
     key: "{{ lookup('file', '{{new_keypath_pub}}') }}"
-  when:
-    - do_add == true
-  tags:
-    - add
