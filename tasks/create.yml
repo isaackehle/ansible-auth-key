@@ -1,19 +1,19 @@
 ---
 
-- name: Create "{{ new_keypath_pub }}"
+- name: Create "{{ _keypath_pub }}"
   connection: local
-  shell: ssh-keygen -b {{ keygen.bits }} -t {{ keygen.encryption }} -f {{ new_keypath }} -q -N '' -C '{{ comment }}'
+  shell: ssh-keygen -b {{ keygen.bits }} -t {{ keygen.encryption }} -f {{ _keypath }} -q -N '' -C '{{ comment }}'
   run_once: true
   args:
-    creates: "{{ new_keypath_pub }}"
+    creates: "{{ _keypath_pub }}"
 
-- name: Create "{{ new_keypath_pem }}"
+- name: Create "{{ _keypath_pem }}"
   connection: local
-  shell: cp {{ new_keypath }} {{ new_keypath_pem }}
+  shell: cp {{ _keypath }} {{ _keypath_pem }}
   run_once: true
   register: result_pem
   args:
-    creates: "{{ new_keypath_pem }}"
+    creates: "{{ _keypath_pem }}"
 
 - name: Is putty installed?
   connection: local
@@ -28,9 +28,9 @@
   run_once: true
   when: result_putty.failed is defined and result_putty.failed == true
 
-- name: Create "{{ new_keypath_ppk }}"
+- name: Create "{{ _keypath_ppk }}"
   connection: local
-  shell: puttygen {{ new_keypath }} -o {{ new_keypath_ppk }}
+  shell: puttygen {{ _keypath }} -o {{ _keypath_ppk }}
   run_once: true
   args:
-    creates: "{{ new_keypath_ppk }}"
+    creates: "{{ _keypath_ppk }}"

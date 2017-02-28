@@ -1,31 +1,42 @@
 ---
+
 - fail: msg="Please ensure '{{ item.use }}' is set"
   run_once: true
   when:
     - not {{ item.file }} is defined or {{ item.file }} == ""
   with_items:
-    - {file: new_keyfile, use: 'New Key File'}
+    - {file: _keyfile, use: 'New Key File'}
     - {file: keys_base, use: 'Path to base folder for keys'}
     - {file: keygen, use: 'Key Generation Configuration Object'}
+  tags:
+    - always
 
 - debug: var={{ item }}
   with_items:
-    - new_keyfile
+    - _keyfile
     - keys_base
     - keygen
   run_once: true
+  tags:
+    - always
 
 - set_fact:
     comment:  "{{ server_fqdn }}"
   when: not comment is defined or comment == ""
+  tags:
+    - always
 
 - set_fact:
-    new_keypath: "{{ keys_base }}/{{ new_keyfile }}"
+    _keypath: "{{ keys_base }}/{{ _keyfile }}"
+  tags:
+    - always
 
 - set_fact:
-    new_keypath_pub: "{{ new_keypath }}.pub"
-    new_keypath_pem: "{{ new_keypath }}.pem"
-    new_keypath_ppk: "{{ new_keypath }}.ppk"
+    _keypath_pub: "{{ _keypath }}.pub"
+    _keypath_pem: "{{ _keypath }}.pem"
+    _keypath_ppk: "{{ _keypath }}.ppk"
+  tags:
+    - always
 
 - include: clear.yml
   tags:

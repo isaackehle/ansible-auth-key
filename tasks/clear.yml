@@ -5,8 +5,8 @@
   file: path={{ item }} state=absent
   run_once: true
   with_items:
-    - "{{new_keypath}}"
-    - "{{new_keypath_pub}}"
-    - "{{new_keypath_pem}}"
-    - "{{new_keypath_ppk}}"
+    - "{{_keypath}}"
+    - "{{_keypath_pub}}"
+    - "{{_keypath_pem}}"
+    - "{{_keypath_ppk}}"
 
