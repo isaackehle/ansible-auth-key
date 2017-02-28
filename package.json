@@ -1,6 +1,6 @@
 {
   "name": "ansible-auth-key",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Create auth-key authorization keys, and push to a server",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
