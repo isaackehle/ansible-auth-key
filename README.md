@@ -1,4 +1,4 @@
-# Ansible: auth-key
+# Ansible Role - auth-key
 
 Create, add and remove OpenSSH authorization keys
 
@@ -21,7 +21,7 @@ MIT
 ## For local development testing
 
 ```bash
-rsync -a ~/code/ansible-auth-key/* ~/.ansible/roles/pgkehle.auth-key
+rsync -av --delete ~/code/ansible-auth-key/* ~/.ansible/roles/pgkehle.auth-key
 ```
 
 ## Author Information
