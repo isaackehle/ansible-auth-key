@@ -3,7 +3,7 @@
 - fail: msg="Please ensure '{{ item.use }}' is set"
   run_once: true
   when:
-    - not {{ item.file }} is defined or {{ item.file }} == ""
+    - not item.file is defined or item.file == ""
   with_items:
     - {file: _keyfile, use: 'New Key File'}
     - {file: keys_base, use: 'Path to base folder for keys'}
