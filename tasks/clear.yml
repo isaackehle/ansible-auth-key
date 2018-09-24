@@ -9,4 +9,5 @@
     - "{{_keypath_pub}}"
     - "{{_keypath_pem}}"
     - "{{_keypath_ppk}}"
+  tags: ['always']
 

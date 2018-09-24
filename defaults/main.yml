@@ -1,7 +1,6 @@
 ---
 
-private_base:         "~/private"
-keys_base:            "{{ private_base }}/keys"
+keys_base:            "~/private/keys"
 
 keygen:
   bits:               4096
