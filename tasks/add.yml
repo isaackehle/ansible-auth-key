@@ -5,3 +5,4 @@
     user: '{{ansible_user}}'
     state: present
     key: "{{ lookup('file', '{{_keypath_pub}}') }}"
+  tags: ['always']
