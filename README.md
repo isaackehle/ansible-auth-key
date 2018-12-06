@@ -18,12 +18,6 @@ Available on Ansible Galaxy: [pgkehle.auth-key](https://galaxy.ansible.com/pgkeh
 
 MIT
 
-## For local development testing
-
-```bash
-rsync -av --delete ~/code/ansible-auth-key/* ~/.ansible/roles/pgkehle.auth-key
-```
-
 ## Author Information
 
 Paul Kehle  
