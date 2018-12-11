@@ -18,8 +18,7 @@
   run_once: true
   tags: ['always']
 
-- set_fact:
-    comment:  "{{ server_fqdn }}"
+- set_fact: comment={{ server_fqdn }}
   when: not comment is defined or comment == ""
   tags: ['always']
 
