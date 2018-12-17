@@ -19,7 +19,7 @@
   tags: ['always']
 
 - set_fact: comment={{ server_fqdn }}
-  when: not comment is defined or comment == ""
+  when: comment is undefined or comment == ""
   tags: ['always']
 
 - set_fact:
