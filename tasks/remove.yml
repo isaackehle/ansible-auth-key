@@ -2,7 +2,7 @@
 
 - name: Remove key from the server
   authorized_key:
-    user: '{{ansible_user}}'
+    user: '{{ ansible_user }}'
     state: absent
     key: "{{ lookup('file', '{{_keypath_pub}}') }}"
   tags: ['always']
