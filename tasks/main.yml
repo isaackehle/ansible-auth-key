@@ -12,23 +12,19 @@
     - {file: keygen, use: 'Key Generation Configuration Object'}
   tags: ['always']
 
-- debug: var={{ item }}
-  with_items:
-    - _keyfile
-    - keys_base
-    - keygen
-  run_once: true
-  tags: ['always']
-
-- set_fact: comment={{ server_fqdn }}
+- name: Set the comment for the key
+  set_fact: 
+    comment: '{{ server_fqdn }}'
   when: comment is undefined or comment == ""
   tags: ['always']
 
-- set_fact:
+- name: Set _keypath
+  set_fact:
     _keypath: "{{ keys_base }}/{{ _keyfile }}"
   tags: ['always']
 
-- set_fact:
+- name: Set the keypath derivatives
+  set_fact:
     _keypath_pub: "{{ _keypath }}.pub"
     _keypath_pem: "{{ _keypath }}.pem"
     _keypath_ppk: "{{ _keypath }}.ppk"
