@@ -4,5 +4,5 @@
   authorized_key:
     user: '{{ ansible_user }}'
     state: absent
-    key: "{{ lookup('file', '{{_keypath_pub}}') }}"
+    key: "{{ lookup('file', '{{ _keypath_pub }}') }}"
   tags: ['always']
