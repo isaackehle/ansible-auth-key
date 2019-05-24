@@ -29,7 +29,7 @@
   connection: local
   shell: brew install putty
   run_once: true
-  when: result_putty.failed is defined and result_putty.failed == true
+  when: result_putty.failed is defined and result_putty.failed
   tags: ['create']
 
 - name: Create "{{ _keypath_ppk }}"

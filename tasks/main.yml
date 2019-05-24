@@ -5,7 +5,7 @@
     msg: "Please ensure '{{ item.use }}' is set"
   run_once: true
   when:
-    - item.file is undefined or item.file == ""
+    - item.file is undefined or item.file | length == 0
   with_items:
     - {file: _keyfile, use: 'New Key File'}
     - {file: keys_base, use: 'Path to base folder for keys'}
@@ -15,7 +15,7 @@
 - name: Set the comment for the key
   set_fact: 
     comment: '{{ server_fqdn }}'
-  when: comment is undefined or comment == ""
+  when: comment is undefined or comment | length == 0
   tags: ['always']
 
 - name: Set _keypath
