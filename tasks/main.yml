@@ -1,34 +1,33 @@
 ---
-
 - name: Ensure Required Items
-  fail: 
+  fail:
     msg: "Please ensure '{{ item.use }}' is set"
   run_once: true
   when:
     - item.file is undefined or item.file | length == 0
   with_items:
-    - {file: _keyfile, use: 'New Key File'}
-    - {file: keys_base, use: 'Path to base folder for keys'}
-    - {file: keygen, use: 'Key Generation Configuration Object'}
-  tags: ['always']
+    - { file: _keyfile, use: "New Key File" }
+    - { file: keys_base, use: "Path to base folder for keys" }
+    - { file: keygen, use: "Key Generation Configuration Object" }
+  tags: ["always"]
 
 - name: Set the comment for the key
-  set_fact: 
-    comment: '{{ server_fqdn }}'
+  set_fact:
+    comment: "{{ server_fqdn }}"
   when: comment is undefined or comment | length == 0
-  tags: ['always']
+  tags: ["always"]
 
 - name: Set _keypath
   set_fact:
     _keypath: "{{ keys_base }}/{{ _keyfile }}"
-  tags: ['always']
+  tags: ["always"]
 
 - name: Set the keypath derivatives
   set_fact:
     _keypath_pub: "{{ _keypath }}.pub"
     _keypath_pem: "{{ _keypath }}.pem"
     _keypath_ppk: "{{ _keypath }}.ppk"
-  tags: ['always']
+  tags: ["always"]
 
 - include_tasks: clear.yml
   tags:
