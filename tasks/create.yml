@@ -1,21 +1,20 @@
 ---
-
 - name: Create "{{ _keypath_pub }}"
   connection: local
   shell: ssh-keygen -b {{ keygen.bits }} -t {{ keygen.encryption }} -f {{ _keypath }} -q -N '' -C '{{ comment }}'
   run_once: true
-  tags: ['create']
+  tags: ["create"]
   args:
-    creates: "{{ _keypath_pub }}"
+      creates: "{{ _keypath_pub }}"
 
 - name: Create "{{ _keypath_pem }}"
   connection: local
   shell: cp {{ _keypath }} {{ _keypath_pem }}
   run_once: true
   register: result_pem
-  tags: ['create']
+  tags: ["create"]
   args:
-    creates: "{{ _keypath_pem }}"
+      creates: "{{ _keypath_pem }}"
 
 - name: Is putty installed?
   connection: local
@@ -23,19 +22,19 @@
   run_once: true
   register: result_putty
   ignore_errors: yes
-  tags: ['create']
+  tags: ["create"]
 
 - name: Install putty
   connection: local
   shell: brew install putty
   run_once: true
-  when: result_putty.failed is defined and result_putty.failed == true
-  tags: ['create']
+  when: result_putty.failed is defined and result_putty.failed
+  tags: ["create"]
 
 - name: Create "{{ _keypath_ppk }}"
   connection: local
   shell: puttygen {{ _keypath }} -o {{ _keypath_ppk }}
   run_once: true
-  tags: ['create']
+  tags: ["create"]
   args:
-    creates: "{{ _keypath_ppk }}"
+      creates: "{{ _keypath_ppk }}"
