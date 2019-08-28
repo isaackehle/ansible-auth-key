@@ -13,7 +13,7 @@
 
 - name: Set the comment for the key
   set_fact:
-    comment: "{{ server_fqdn }}"
+    comment: "{{ fqdn }}"
   when: comment is undefined or comment | length == 0
   tags: ["always"]
 
