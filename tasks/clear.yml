@@ -1,6 +1,6 @@
 ---
 - name: Remove old keys for regeneration
-  connection: local
+  delegate_to: localhost
   file:
     path: "{{ item }}"
     state: absent

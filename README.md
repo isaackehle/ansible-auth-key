@@ -6,7 +6,7 @@ Available on Ansible Galaxy: [pgkehle.auth-key](https://galaxy.ansible.com/pgkeh
 
 # Examples
 
-## Create Keys 
+## Create Keys
 
 ```YAML
 - hosts: all
