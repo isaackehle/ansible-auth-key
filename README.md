@@ -4,14 +4,19 @@ Create, add and remove OpenSSH authorization keys
 
 Available on Ansible Galaxy: [pgkehle.auth-key](https://galaxy.ansible.com/pgkehle/auth-key)
 
-# Examples
-
-## Create Keys
+## Examples
 
 ```YAML
 - hosts: all
   roles:
     - { role: pgkehle.auth-key, do_create: true, tags: ["create"] }
+```
+
+## Linting
+
+```bash
+yamllint -c yamllint.yaml .
+ansible-lint .
 ```
 
 ## License
