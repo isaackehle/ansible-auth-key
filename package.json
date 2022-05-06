@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pgkehle/ansible-auth-key.git"
+    "url": "git+https://github.com/isaackehle/ansible-auth-key.git"
   },
-  "author": "Paul Kehle (pgkehle@gmail.com)",
+  "author": "Isaac Kehle (isaac@kehle.org)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pgkehle/ansible-auth-key/issues"
+    "url": "https://github.com/isaackehle/ansible-auth-key/issues"
   },
-  "homepage": "https://github.com/pgkehle/ansible-auth-key#readme",
+  "homepage": "https://github.com/isaackehle/ansible-auth-key#readme",
   "main": "tasks/main.yml",
   "keywords": [
     "ansible"
